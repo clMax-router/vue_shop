@@ -11,12 +11,28 @@ const routes = [
   },
   {
     path: '/login',
-    // name: 'Login',
+    name: 'Login',
     component: () => import('@/components/Login')
   },
+  // 主页
   {
     path: '/home',
-    component: () => import('@/components/Home')
+    name: 'Home',
+    component: () => import('@/components/Home'),
+    redirect: '/welcome',
+    children: [
+      {
+        path: '/welcome',
+        name: 'Welcome',
+        component: () => import('@/components/Welcome')
+      },
+      // 用户列表
+      {
+        path: '/users',
+        name: 'users',
+        component: () => import('@/components/user/Users')
+      }
+    ]
   }
 ]
 
